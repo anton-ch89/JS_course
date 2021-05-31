@@ -1,3 +1,5 @@
+'use strict';
+
 let money = 2000;
 let income = 'фриланс';
 let addExpenses = 'Коммуналка, Мобильная связь, Интернет, Такси, Продукты';
@@ -14,4 +16,5 @@ console.log('Период равен ' + period + ' месяцев.');
 console.log('Цель заработать ' + mission + ' долларов.');
 console.log(addExpenses.toLowerCase().split(', '));
 console.log('budgetDay: ', budgetDay);
+
 
