@@ -45,11 +45,11 @@ let appData = {
             let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
                   'Квартплата, Проездной, Кредит').trim();
 
-                  if(isNumber(addExpenses)) {
-                     addExpenses =  prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
-                  'Квартплата, Проездной, Кредит');
+            if (isNumber(addExpenses)) {
+                  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
+                        'Квартплата, Проездной, Кредит');
                   addExpenses = addExpenses.trim();
-                  }
+            }
             appData.addExpenses = addExpenses.toLowerCase().split(',');
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
             let val = '';
@@ -136,4 +136,34 @@ console.log(appData.addExpenses.map(word => word.trim()[0].toUpperCase() + word.
 for (let key in appData) {
       console.log('Наша программа включает в себя данные: ' + key, appData[key]);
 }
+
+const calculateButton = document.getElementById('start');
+const plusButton1 = document.querySelectorAll('button')[0];
+const plusButton2 = document.querySelectorAll('button')[1];
+const checkBox = document.querySelector('#deposit-check');
+const incomeItems = document.querySelectorAll('.additional_income-item');
+
+const budgetDay = document.querySelectorAll('.result-total')[1];
+const expensesMonth = document.querySelectorAll('.result-total')[2];
+const additionalIncome = document.querySelectorAll('.result-total')[3];
+const additionalExpenses = document.querySelectorAll('.result-total')[4];
+const incomePeriod = document.querySelectorAll('.result-total')[5];
+const targetMonth = document.querySelectorAll('.result-total')[6];
+
+const budgetMonth = document.querySelector('.budget_month');
+
+const salaryAmount = document.querySelector('.salary-amount');
+const incomeTitle = document.querySelector('.income-title');
+const incomeAmount = document.querySelector('.income-amount');
+const additionalIncomeItem1 = document.querySelectorAll('.additional_income-item')[0];
+const additionalIncomeItem2 = document.querySelector('.additional_income-item')[1];
+const expensesTitle = document.querySelector('.expenses-title');
+const expensesAmount = document.querySelector('.expenses-amount');
+const additionalExpensesItem = document.querySelector('.additional_expenses-item');
+const depositAmount = document.querySelector('.deposit-amount');
+const depositPercent = document.querySelector('.deposit-percent');
+const periodSelect = document.querySelector('.period-select');
+
+
+
 
