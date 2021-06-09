@@ -32,24 +32,19 @@ let appData = {
       asking: function () {
 
             if (confirm('Есть ли у Вас дополнительный источник заработка?')) {
-                  let itemIncome = prompt('Какой у Вас есть дополнительный заработок', 'Фриланс');
-                  if (isNumber(itemIncome)) {
-                  itemIncome = prompt('Какой у Вас есть дополнительный заработок. Ввдите ответ буквами', 'Фриланс');
-                  }
-                  let cashIncome = prompt('Сколько в месяц Вы на этом зарабатываете?');
-                  if (!isNumber(cashIncome)) {
-                        cashIncome = prompt('Сколько в месяц Вы на этом зарабатываете? Введите числовое значение');
-                  }
+                  let itemIncome = ''; 
+                  do{itemIncome = prompt('Какой у Вас есть дополнительный заработок', 'Фриланс');
+                  }while(isNumber(itemIncome));
+                 
+                  let cashIncome = 0;
+                  do {cashIncome = prompt('Сколько в месяц Вы на этом зарабатываете?');
+                  }while(!isNumber(cashIncome));
                   appData.income[itemIncome] = cashIncome;
             }
-            let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
+            let addExpenses = '';
+            do{addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
                   'Квартплата, Проездной, Кредит').trim();
-
-                  if(isNumber(addExpenses)) {
-                     addExpenses =  prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
-                  'Квартплата, Проездной, Кредит');
-                  addExpenses = addExpenses.trim();
-                  }
+            }while(isNumber(addExpenses));
             appData.addExpenses = addExpenses.toLowerCase().split(',');
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
             let val = '';
@@ -136,4 +131,6 @@ console.log(appData.addExpenses.map(word => word.trim()[0].toUpperCase() + word.
 for (let key in appData) {
       console.log('Наша программа включает в себя данные: ' + key, appData[key]);
 }
+
+
 
