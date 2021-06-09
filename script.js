@@ -32,24 +32,19 @@ let appData = {
       asking: function () {
 
             if (confirm('Есть ли у Вас дополнительный источник заработка?')) {
-                  let itemIncome = prompt('Какой у Вас есть дополнительный заработок', 'Фриланс');
-                  if (isNumber(itemIncome)) {
-                  itemIncome = prompt('Какой у Вас есть дополнительный заработок. Ввдите ответ буквами', 'Фриланс');
-                  }
-                  let cashIncome = prompt('Сколько в месяц Вы на этом зарабатываете?');
-                  if (!isNumber(cashIncome)) {
-                        cashIncome = prompt('Сколько в месяц Вы на этом зарабатываете? Введите числовое значение');
-                  }
+                  let itemIncome = ''; 
+                  do{itemIncome = prompt('Какой у Вас есть дополнительный заработок', 'Фриланс');
+                  }while(isNumber(itemIncome));
+                 
+                  let cashIncome = 0;
+                  do {cashIncome = prompt('Сколько в месяц Вы на этом зарабатываете?');
+                  }while(!isNumber(cashIncome));
                   appData.income[itemIncome] = cashIncome;
             }
-            let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
+            let addExpenses = '';
+            do{addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
                   'Квартплата, Проездной, Кредит').trim();
-
-            if (isNumber(addExpenses)) {
-                  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
-                        'Квартплата, Проездной, Кредит');
-                  addExpenses = addExpenses.trim();
-            }
+            }while(isNumber(addExpenses));
             appData.addExpenses = addExpenses.toLowerCase().split(',');
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
             let val = '';
@@ -138,17 +133,18 @@ for (let key in appData) {
 }
 
 const calculateButton = document.getElementById('start');
-const plusButton1 = document.querySelectorAll('button')[0];
-const plusButton2 = document.querySelectorAll('button')[1];
+const plusButton1 = document.getElementsByTagName('button')[0];
+const plusButton2 = document.getElementsByTagName('button')[1];
+
 const checkBox = document.querySelector('#deposit-check');
 const incomeItems = document.querySelectorAll('.additional_income-item');
 
-const budgetDay = document.querySelectorAll('.result-total')[1];
-const expensesMonth = document.querySelectorAll('.result-total')[2];
-const additionalIncome = document.querySelectorAll('.result-total')[3];
-const additionalExpenses = document.querySelectorAll('.result-total')[4];
-const incomePeriod = document.querySelectorAll('.result-total')[5];
-const targetMonth = document.querySelectorAll('.result-total')[6];
+const budgetDay = document.getElementsByClassName('result-total')[1];
+const expensesMonth = document.getElementsByClassName('result-total')[2];
+const additionalIncome = document.getElementsByClassName('result-total')[3];
+const additionalExpenses = document.getElementsByClassName('result-total')[4];
+const incomePeriod = document.getElementsByClassName('result-total')[5];
+const targetMonth = document.getElementsByClassName('result-total')[6];
 
 const budgetMonth = document.querySelector('.budget_month');
 
@@ -156,7 +152,7 @@ const salaryAmount = document.querySelector('.salary-amount');
 const incomeTitle = document.querySelector('.income-title');
 const incomeAmount = document.querySelector('.income-amount');
 const additionalIncomeItem1 = document.querySelectorAll('.additional_income-item')[0];
-const additionalIncomeItem2 = document.querySelector('.additional_income-item')[1];
+const additionalIncomeItem2 = document.querySelectorAll('.additional_income-item')[1];
 const expensesTitle = document.querySelector('.expenses-title');
 const expensesAmount = document.querySelector('.expenses-amount');
 const additionalExpensesItem = document.querySelector('.additional_expenses-item');
