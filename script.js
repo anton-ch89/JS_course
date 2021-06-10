@@ -139,12 +139,12 @@ const plusButton2 = document.getElementsByTagName('button')[1];
 const checkBox = document.querySelector('#deposit-check');
 const incomeItems = document.querySelectorAll('.additional_income-item');
 
-const budgetDay = document.getElementsByClassName('result-total')[1];
-const expensesMonth = document.getElementsByClassName('result-total')[2];
-const additionalIncome = document.getElementsByClassName('result-total')[3];
-const additionalExpenses = document.getElementsByClassName('result-total')[4];
-const incomePeriod = document.getElementsByClassName('result-total')[5];
-const targetMonth = document.getElementsByClassName('result-total')[6];
+const budgetDay = document.getElementsByClassName('budget_day-value')[0];
+const expensesMonth = document.getElementsByClassName('expenses_month-value')[0];
+const additionalIncome = document.getElementsByClassName('additional_income-value')[0];
+const additionalExpenses = document.getElementsByClassName('additional_expenses-value')[0];
+const incomePeriod = document.getElementsByClassName('income_period-value')[0];
+const targetMonth = document.getElementsByClassName('target_month-value')[0];
 
 const budgetMonth = document.querySelector('.budget_month');
 
