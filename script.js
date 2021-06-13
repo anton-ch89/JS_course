@@ -133,8 +133,8 @@ AppData.prototype.reset = function () {
 AppData.prototype.getAddIncome = function () {
       additionalIncomeItem.forEach(item => {
             let itemValue = item.value.trim();
-            if (item.value !== '') {
-                  this.addIncome.push(item.value);
+            if (itemValue !== '') {
+                  this.addIncome.push(itemValue);
             }
       });
 };
