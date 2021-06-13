@@ -56,7 +56,6 @@ let appData = {
             this.getIncome();
             this.getBudget();
             this.getAddIncome();
-            this.calcPeriod();
             this.showResult();
 
             start.setAttribute('disabled', true);
@@ -136,13 +135,17 @@ let appData = {
       },
 
       showResult: function () {
+            const _this = this;
             budgetDayValue.value = this.budgetDay;
             expensesMonthValue.value = this.expensesMonth;
             additionalExpensesValue.value = this.addExpenses.join(', ');
             additionalIncomeValue.value = this.addIncome.join(', ');
             targetMonthValue.value = this.getTargetMonth();
             budgetMonthValue.value = this.budgetMonth;
-            periodSelect.addEventListener('change', this.calcPeriod);
+            incomePeriodValue.value = this.calcPeriod();
+            periodSelect.addEventListener('change', function () {
+                  incomePeriodValue.value = _this.calcPeriod();
+            });
       },
 
       changePeriodSelect: function () {
@@ -217,6 +220,7 @@ let appData = {
 
             this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth;
             this.budgetDay = Math.floor(this.budgetMonth / 30);
+            console.log(this);
       },
       
       // --------Получение периода выполнения цели---------------
@@ -252,13 +256,8 @@ let appData = {
       },
       
       calcPeriod: function () {
-            incomePeriodValue.value = periodSelect.value * this.budgetMonth;
-            console.log(typeof periodSelect.value);
-            console.log(periodSelect.value);
-            console.log(typeof this.budgetMonth);
-            console.log(this.budgetMonth);
-            console.log(typeof incomePeriodValue.value);
-            console.log(incomePeriodValue.value);
+           return this.budgetMonth * periodSelect.value;
+
       },
 };
 
