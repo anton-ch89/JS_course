@@ -105,7 +105,7 @@ class AppData {
             incomePeriodValue.value = 0;
             periodSelect.value = 1;
             periodAmount.textContent = '1';
-            
+
             cancel.style.display = 'none';
             start.style.display = 'block';
             start.removeAttribute('disabled');
@@ -146,7 +146,7 @@ class AppData {
       }
 
       showResult() {
-           
+
             budgetMonthValue.value = this.budgetMonth;
             budgetDayValue.value = this.budgetDay;
             expensesMonthValue.value = this.expensesMonth;
@@ -230,7 +230,7 @@ class AppData {
 
       //--------Получение месячного и дневного бюджетов---------------
       getBudget() {
-            const monthDeposit = Math.round(this.moneyDeposit * ((this.percentDeposit / 100)/12));
+            const monthDeposit = Math.round(this.moneyDeposit * ((this.percentDeposit / 100) / 12));
             this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth + monthDeposit;
             this.budgetDay = Math.floor(this.budgetMonth / 30);
       }
@@ -268,11 +268,11 @@ class AppData {
 
       checkPercentDeposit() {
             let percentValue = depositPercent.value;
-            if (!isNumber(percentValue) || percentValue > 100 || percentValue < 1 ){
+            if (!isNumber(percentValue) || percentValue > 100 || percentValue < 1) {
                   alert('Введите корректное значение в поле проценты');
                   percentValue = '';
                   start.setAttribute('disabled', true);
-            }else {
+            } else {
                   start.sremoveAttribute('disabled');
             }
       }
@@ -282,7 +282,7 @@ class AppData {
             if (valueSelect === 'other') {
                   depositPercent.value = '';
                   depositPercent.style.display = 'inline-block';
-            }else {
+            } else {
                   depositPercent.value = valueSelect;
             }
       }
