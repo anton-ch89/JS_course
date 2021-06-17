@@ -230,7 +230,7 @@ class AppData {
 
       //--------Получение месячного и дневного бюджетов---------------
       getBudget() {
-            const monthDeposit = Math.round(this.moneyDeposit * ((this.percentDeposit / 100) / 12));
+            const monthDeposit = Math.round(this.moneyDeposit * (this.percentDeposit / 100));
             this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth + monthDeposit;
             this.budgetDay = Math.floor(this.budgetMonth / 30);
       }
@@ -273,7 +273,7 @@ class AppData {
                   percentValue = '';
                   start.setAttribute('disabled', true);
             } else {
-                  start.sremoveAttribute('disabled');
+                  start.removeAttribute('disabled');
             }
       }
 
